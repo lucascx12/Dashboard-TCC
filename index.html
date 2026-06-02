@@ -353,29 +353,58 @@
     </div>
   </div>
 
-  <!-- CHARTS ROW 1 -->
+  <!-- CHARTS ROW 1 — Gráfico 1 completo -->
   <div class="charts-grid">
-
-    <!-- GRÁFICO 1: Crescimento PIX 2020–2024 -->
     <div class="chart-card chart-full">
       <div class="chart-header">
         <div class="chart-num">Gráfico 01</div>
         <div class="chart-title">Crescimento do PIX — Transações e Valor Movimentado (2020–2024)</div>
-        <div class="chart-desc">Trajetória exponencial do PIX desde seu lançamento em novembro de 2020. Barras = volume de transações (bilhões); linha = valor movimentado (trilhões de R$).</div>
+        <div class="chart-desc">Trajetória exponencial do PIX desde seu lançamento em novembro de 2020. Barras = volume de transações (bilhões); linha = valor movimentado (trilhões de R$). *2020 reflete apenas novembro–dezembro.</div>
       </div>
       <div class="chart-wrap"><canvas id="chart1" height="90"></canvas></div>
       <div class="chart-source">Fonte: FEBRABAN. <em>Meios de Pagamento 2024.</em> São Paulo, maio 2025; BANCO CENTRAL DO BRASIL. <em>Estatísticas PIX.</em> Brasília, 2023.</div>
     </div>
+  </div>
+
+  <!-- CHARTS ROW 2 — Gráficos 2 e 3 -->
+  <div class="charts-grid">
 
     <!-- GRÁFICO 2: Meios de Pagamento 2024 (volume) -->
     <div class="chart-card">
       <div class="chart-header">
         <div class="chart-num">Gráfico 02</div>
         <div class="chart-title">Meios de Pagamento — Volume de Transações em 2024 (bilhões)</div>
-        <div class="chart-desc">O PIX sozinho supera todos os demais meios somados (50,8 bi).</div>
+        <div class="chart-desc">O PIX (63,8 bi) supera sozinho a soma de todos os demais meios de pagamento (50,8 bi).</div>
       </div>
       <div class="chart-wrap"><canvas id="chart2" height="220"></canvas></div>
       <div class="chart-source">Fonte: FEBRABAN. <em>Meios de Pagamento 2024,</em> com base em dados do BCB e ABECS. São Paulo, maio 2025.</div>
+    </div>
+
+    <!-- GRÁFICO 3: Bancarização -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-num">Gráfico 03</div>
+        <div class="chart-title">Evolução da Bancarização no Brasil — % de Adultos (2017–2024)</div>
+        <div class="chart-desc">De 70% em 2017 para 96,4% em 2024. A pandemia de COVID-19 e o lançamento do PIX aceleraram significativamente o processo.</div>
+      </div>
+      <div class="chart-wrap"><canvas id="chart3" height="220"></canvas></div>
+      <div class="chart-source">Fonte: BCB. <em>Relatório de Cidadania Financeira 2024.</em> Brasília, 2026; WORLD BANK. <em>Global Findex Database 2021.</em> Washington, 2022.</div>
+    </div>
+
+  </div>
+
+  <!-- CHARTS ROW 3 — Gráficos 4 e 5 -->
+  <div class="charts-grid">
+
+    <!-- GRÁFICO 4: Fraudes -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-num">Gráfico 04</div>
+        <div class="chart-title">Prejuízo com Golpes e Fraudes Financeiras no Brasil (R$ bilhões)</div>
+        <div class="chart-desc">Perdas cresceram 17% de 2023 para 2024. Golpes via PIX acumularam R$ 2,7 bi em 2 anos, com alta de 43% nas transações fraudulentas.</div>
+      </div>
+      <div class="chart-wrap"><canvas id="chart4" height="220"></canvas></div>
+      <div class="chart-source">Fonte: FEBRABAN. <em>Relatório de Fraudes e Golpes Financeiros.</em> São Paulo, março 2025.</div>
     </div>
 
     <!-- GRÁFICO 5: Valor transacionado 2024 -->
@@ -383,37 +412,10 @@
       <div class="chart-header">
         <div class="chart-num">Gráfico 05</div>
         <div class="chart-title">PIX vs. Outros Meios — Valor Transacionado em 2024 (R$ trilhões)</div>
-        <div class="chart-desc">Em valor, a TED lidera por concentrar operações B2B de alto ticket.</div>
+        <div class="chart-desc">Embora líder em número de transações, o PIX (R$ 26,9 tri) ainda é superado pela TED (R$ 43,1 tri) em valor — esta preferida para operações B2B de alto ticket.</div>
       </div>
       <div class="chart-wrap"><canvas id="chart5" height="220"></canvas></div>
       <div class="chart-source">Fonte: FEBRABAN. <em>Meios de Pagamento 2024,</em> com base em dados do BCB e ABECS. São Paulo, maio 2025.</div>
-    </div>
-
-  </div>
-
-  <!-- CHARTS ROW 2 -->
-  <div class="charts-grid">
-
-    <!-- GRÁFICO 3: Bancarização -->
-    <div class="chart-card">
-      <div class="chart-header">
-        <div class="chart-num">Gráfico 03</div>
-        <div class="chart-title">Evolução da Bancarização no Brasil — % de Adultos (2017–2024)</div>
-        <div class="chart-desc">De 70% em 2017 para 96,4% em 2024. A pandemia e o PIX aceleraram o processo.</div>
-      </div>
-      <div class="chart-wrap"><canvas id="chart3" height="220"></canvas></div>
-      <div class="chart-source">Fonte: BCB. <em>Relatório de Cidadania Financeira 2024.</em> Brasília, 2026; WORLD BANK. <em>Global Findex Database 2021.</em> Washington, 2022.</div>
-    </div>
-
-    <!-- GRÁFICO 4: Fraudes -->
-    <div class="chart-card">
-      <div class="chart-header">
-        <div class="chart-num">Gráfico 04</div>
-        <div class="chart-title">Prejuízo com Golpes e Fraudes Financeiras no Brasil (R$ bilhões)</div>
-        <div class="chart-desc">Crescimento de 17% de 2023 para 2024. Golpes via PIX acumularam R$ 2,7 bi em 2 anos, +43%.</div>
-      </div>
-      <div class="chart-wrap"><canvas id="chart4" height="220"></canvas></div>
-      <div class="chart-source">Fonte: FEBRABAN. <em>Relatório de Fraudes e Golpes Financeiros.</em> São Paulo, março 2025.</div>
     </div>
 
   </div>
