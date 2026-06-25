@@ -8,20 +8,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0e1a;
-    --bg2: #0f1526;
-    --bg3: #141c32;
-    --surface: #1a2240;
-    --surface2: #1f2a4a;
-    --border: rgba(100,140,255,0.12);
-    --accent: #3d7fff;
-    --accent2: #00d4aa;
-    --accent3: #ff6b35;
-    --accent4: #c084fc;
-    --text: #e8edf8;
-    --text2: #8fa3cc;
-    --text3: #5a7099;
-    --glow: rgba(61,127,255,0.15);
+    --bg: #f7f8fc;
+    --bg2: #eef1f8;
+    --bg3: #eef1f8;
+    --surface: #ffffff;
+    --surface2: #f3f5fa;
+    --border: rgba(61,90,160,0.12);
+    --accent: #2563eb;
+    --accent2: #0d9488;
+    --accent3: #ea580c;
+    --accent4: #9333ea;
+    --text: #1a2240;
+    --text2: #50608a;
+    --text3: #8492b8;
+    --glow: rgba(37,99,235,0.10);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,8 +40,8 @@
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(61,127,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(61,127,255,0.04) 1px, transparent 1px);
+      linear-gradient(rgba(37,99,235,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37,99,235,0.05) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
@@ -119,12 +119,14 @@
     position: relative;
     overflow: hidden;
     animation: fadeUp 0.5s ease both;
-    transition: transform 0.2s, border-color 0.2s;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(30,41,80,0.06);
   }
 
   .kpi-card:hover {
     transform: translateY(-2px);
-    border-color: rgba(100,140,255,0.25);
+    border-color: rgba(37,99,235,0.25);
+    box-shadow: 0 6px 16px rgba(30,41,80,0.10);
   }
 
   .kpi-card::before {
@@ -137,8 +139,8 @@
   .kpi-card.c2::before { background: var(--accent2); }
   .kpi-card.c3::before { background: var(--accent3); }
   .kpi-card.c4::before { background: var(--accent4); }
-  .kpi-card.c5::before { background: #facc15; }
-  .kpi-card.c6::before { background: #fb7185; }
+  .kpi-card.c5::before { background: #ca8a04; }
+  .kpi-card.c6::before { background: #e11d48; }
   .kpi-card.c7::before { background: var(--accent2); }
 
   .kpi-label {
@@ -161,8 +163,8 @@
   .kpi-card.c2 .kpi-value { color: var(--accent2); }
   .kpi-card.c3 .kpi-value { color: var(--accent3); }
   .kpi-card.c4 .kpi-value { color: var(--accent4); }
-  .kpi-card.c5 .kpi-value { color: #facc15; }
-  .kpi-card.c6 .kpi-value { color: #fb7185; }
+  .kpi-card.c5 .kpi-value { color: #ca8a04; }
+  .kpi-card.c6 .kpi-value { color: #e11d48; }
   .kpi-card.c7 .kpi-value { color: var(--accent2); }
 
   .kpi-change {
@@ -170,7 +172,7 @@
     color: var(--text3);
   }
   .kpi-change.up { color: var(--accent2); }
-  .kpi-change.down { color: #fb7185; }
+  .kpi-change.down { color: #e11d48; }
 
   /* Charts section */
   .charts-grid {
@@ -188,10 +190,11 @@
     border-radius: 16px;
     padding: 28px;
     animation: fadeUp 0.6s ease both;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(30,41,80,0.06);
   }
 
-  .chart-card:hover { border-color: rgba(100,140,255,0.2); }
+  .chart-card:hover { border-color: rgba(37,99,235,0.2); box-shadow: 0 6px 20px rgba(30,41,80,0.08); }
 
   .chart-header {
     margin-bottom: 6px;
@@ -484,24 +487,24 @@
 <script>
   // ── Paleta global ──
   const C = {
-    accent:  '#3d7fff',
-    green:   '#00d4aa',
-    orange:  '#ff6b35',
-    purple:  '#c084fc',
-    yellow:  '#facc15',
-    red:     '#fb7185',
-    text:    '#e8edf8',
-    text2:   '#8fa3cc',
-    text3:   '#5a7099',
-    border:  'rgba(100,140,255,0.12)',
-    bg:      '#1a2240',
+    accent:  '#2563eb',
+    green:   '#0d9488',
+    orange:  '#ea580c',
+    purple:  '#9333ea',
+    yellow:  '#ca8a04',
+    red:     '#e11d48',
+    text:    '#1a2240',
+    text2:   '#50608a',
+    text3:   '#8492b8',
+    border:  'rgba(61,90,160,0.12)',
+    bg:      '#ffffff',
   };
 
   const fontDef = { family: "'DM Sans', sans-serif" };
 
   const tooltipStyle = {
-    backgroundColor: '#1f2a4a',
-    borderColor: 'rgba(100,140,255,0.3)',
+    backgroundColor: '#ffffff',
+    borderColor: 'rgba(37,99,235,0.25)',
     borderWidth: 1,
     titleColor: C.text,
     bodyColor: C.text2,
@@ -511,7 +514,7 @@
     bodyFont: fontDef,
   };
 
-  const gridColor = 'rgba(100,140,255,0.08)';
+  const gridColor = 'rgba(61,90,160,0.08)';
   const tickStyle = { color: C.text3, font: { ...fontDef, size: 11 } };
 
   // ── GRÁFICO 1 — PIX crescimento ──
@@ -524,11 +527,11 @@
           label: 'Transações (bilhões)',
           data: [2.3, 8.2, 24.0, 41.9, 63.8],
           backgroundColor: [
-            'rgba(61,127,255,0.35)',
-            'rgba(61,127,255,0.45)',
-            'rgba(61,127,255,0.55)',
-            'rgba(61,127,255,0.70)',
-            'rgba(61,127,255,0.90)',
+            'rgba(37,99,235,0.35)',
+            'rgba(37,99,235,0.45)',
+            'rgba(37,99,235,0.55)',
+            'rgba(37,99,235,0.70)',
+            'rgba(37,99,235,0.90)',
           ],
           borderColor: C.accent,
           borderWidth: 1,
@@ -541,7 +544,7 @@
           label: 'Valor movimentado (R$ tri)',
           data: [0.3, 3.6, 10.6, 17.2, 26.9],
           borderColor: C.green,
-          backgroundColor: 'rgba(0,212,170,0.08)',
+          backgroundColor: 'rgba(13,148,136,0.08)',
           pointBackgroundColor: C.green,
           pointRadius: 5,
           pointHoverRadius: 7,
@@ -586,13 +589,13 @@
         label: 'Transações (bilhões)',
         data: [63.8, 19.8, 16.7, 9.2, 4.2, 0.82, 0.13],
         backgroundColor: [
-          'rgba(61,127,255,0.85)',
-          'rgba(0,212,170,0.7)',
-          'rgba(0,212,170,0.55)',
-          'rgba(0,212,170,0.40)',
-          'rgba(192,132,252,0.65)',
-          'rgba(250,204,21,0.65)',
-          'rgba(251,113,133,0.65)',
+          'rgba(37,99,235,0.85)',
+          'rgba(13,148,136,0.7)',
+          'rgba(13,148,136,0.55)',
+          'rgba(13,148,136,0.40)',
+          'rgba(147,51,234,0.65)',
+          'rgba(202,138,4,0.65)',
+          'rgba(225,29,72,0.65)',
         ],
         borderRadius: 5,
         borderSkipped: false,
@@ -624,10 +627,10 @@
         label: 'Valor (R$ trilhões)',
         data: [43.1, 26.9, 6.2, 2.8],
         backgroundColor: [
-          'rgba(250,204,21,0.75)',
-          'rgba(61,127,255,0.85)',
-          'rgba(192,132,252,0.70)',
-          'rgba(0,212,170,0.70)',
+          'rgba(202,138,4,0.75)',
+          'rgba(37,99,235,0.85)',
+          'rgba(147,51,234,0.70)',
+          'rgba(13,148,136,0.70)',
         ],
         borderRadius: 6,
         borderSkipped: false,
@@ -663,8 +666,8 @@
         borderColor: C.green,
         backgroundColor: (ctx) => {
           const g = ctx.chart.ctx.createLinearGradient(0, 0, 0, 300);
-          g.addColorStop(0, 'rgba(0,212,170,0.25)');
-          g.addColorStop(1, 'rgba(0,212,170,0.0)');
+          g.addColorStop(0, 'rgba(13,148,136,0.25)');
+          g.addColorStop(1, 'rgba(13,148,136,0.0)');
           return g;
         },
         pointBackgroundColor: C.green,
@@ -707,7 +710,7 @@
         {
           label: 'Total golpes / fraudes (R$ bi)',
           data: [8.6, 10.1],
-          backgroundColor: ['rgba(251,113,133,0.55)', 'rgba(251,113,133,0.85)'],
+          backgroundColor: ['rgba(225,29,72,0.55)', 'rgba(225,29,72,0.85)'],
           borderColor: C.red,
           borderWidth: 1,
           borderRadius: 6,
@@ -716,7 +719,7 @@
         {
           label: 'Golpes via PIX — acumulado 2 anos (R$ bi)',
           data: [null, 2.7],
-          backgroundColor: ['transparent', 'rgba(250,204,21,0.70)'],
+          backgroundColor: ['transparent', 'rgba(202,138,4,0.70)'],
           borderColor: C.yellow,
           borderWidth: 1,
           borderRadius: 6,
@@ -752,8 +755,8 @@
         label: 'Taxa de recuperação de valores fraudados (%)',
         data: [9, 13.3],
         backgroundColor: [
-          'rgba(251,113,133,0.65)',
-          'rgba(0,212,170,0.80)',
+          'rgba(225,29,72,0.65)',
+          'rgba(13,148,136,0.80)',
         ],
         borderColor: [C.red, C.green],
         borderWidth: 1,
