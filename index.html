@@ -226,6 +226,11 @@
 
   .chart-wrap {
     position: relative;
+    height: 280px;
+  }
+
+  .chart-full .chart-wrap {
+    height: 320px;
   }
 
   /* Source footer */
@@ -300,6 +305,176 @@
   /* Tooltip override */
   canvas { display: block; }
 
+  /* ── Ferramenta de busca por período ── */
+  .search-row {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    margin-bottom: 18px;
+  }
+
+  .cal-trigger {
+    flex: 1;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0 14px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    background: var(--surface);
+    transition: border-color 0.2s;
+  }
+  .cal-trigger:hover, .cal-trigger:focus-visible { border-color: var(--accent); outline: none; }
+  .cal-trigger svg { flex-shrink: 0; opacity: 0.7; }
+  .cal-trigger.has-value span { color: var(--text); }
+
+  .search-btn {
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .search-btn:hover { background: #1d4fc4; }
+
+  .cal-panel {
+    display: none;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    z-index: 30;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    width: 280px;
+    box-shadow: 0 10px 28px rgba(30,41,80,0.16);
+  }
+  .cal-panel.open { display: block; }
+
+  .cal-panel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .cal-nav-btn {
+    width: 28px; height: 28px;
+    border: none;
+    background: var(--bg3);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text2);
+    font-size: 15px;
+    transition: background 0.15s;
+  }
+  .cal-nav-btn:hover { background: var(--surface2); }
+  .cal-nav-label {
+    border: none;
+    background: transparent;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  .cal-grid { display: grid; gap: 8px; }
+  .cal-grid-year { grid-template-columns: repeat(2, 1fr); }
+  .cal-grid-month { grid-template-columns: repeat(3, 1fr); margin-bottom: 10px; }
+
+  .cal-grid button {
+    border: none;
+    background: var(--bg3);
+    border-radius: 6px;
+    padding: 10px 0;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .cal-grid button:hover:not(:disabled) { background: rgba(37,99,235,0.12); }
+  .cal-grid button:disabled { color: var(--text3); opacity: 0.4; cursor: default; background: transparent; }
+
+  .cal-month-wrap { display: none; }
+  .cal-month-wrap.open { display: block; }
+
+  .cal-fullyear-btn {
+    width: 100%;
+    height: 36px;
+    border: 1px dashed rgba(13,148,136,0.45);
+    background: rgba(13,148,136,0.07);
+    border-radius: 6px;
+    color: var(--accent2);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .cal-fullyear-btn:hover { background: rgba(13,148,136,0.14); }
+
+  .search-empty, .search-error {
+    font-size: 13px;
+    color: var(--text3);
+    padding: 8px 0 4px;
+  }
+  .search-error { color: #e11d48; }
+
+  .result-kpis {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .result-card {
+    flex: 1;
+    min-width: 200px;
+    background: var(--bg3);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .result-label {
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .result-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .result-value.v-blue { color: var(--accent); }
+  .result-value.v-green { color: var(--accent2); }
+  .result-change {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .result-change.up { color: var(--accent2); }
+  .result-change.down { color: #e11d48; }
+
+  .result-subtitle {
+    font-size: 12px;
+    color: var(--text2);
+    margin-bottom: 10px;
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
     .charts-grid { grid-template-columns: 1fr; }
@@ -310,6 +485,8 @@
   @media (max-width: 480px) {
     .kpi-grid { grid-template-columns: 1fr 1fr; }
     h1 { font-size: 24px; }
+    .search-row { flex-wrap: wrap; }
+    .cal-panel { width: 100%; left: 0; right: 0; }
   }
 </style>
 </head>
@@ -444,6 +621,54 @@
     </div>
   </div>
 
+  <!-- CHARTS ROW 5 — Gráfico 7: Regressão linear (full width) -->
+  <div class="charts-grid">
+    <div class="chart-card chart-full">
+      <div class="chart-header">
+        <div class="chart-num">Gráfico 07</div>
+        <div class="chart-title">Regressão Linear da Quantidade Mensal de Transações PIX — Histórico e Projeção</div>
+        <div class="chart-desc">Série completa desde o lançamento do PIX (nov/2020), com projeção para os 18 meses seguintes. O ajuste sobre os 67 meses completos (R² = 0,987) é sensivelmente superior ao mesmo ajuste restrito aos últimos 24 meses (R² = 0,872) — indício de que a sazonalidade de curto prazo se sobrepõe a uma tendência estrutural de longo prazo.</div>
+      </div>
+      <div class="chart-wrap"><canvas id="chart7" height="80"></canvas></div>
+      <div class="chart-source">Fonte: BANCO CENTRAL DO BRASIL. <em>Estatísticas do SPI.</em> Regressão linear elaborada pelo autor (2026).</div>
+    </div>
+  </div>
+
+  <!-- CHARTS ROW 6 — Ferramenta de busca por período (full width) -->
+  <div class="charts-grid">
+    <div class="chart-card chart-full">
+      <div class="chart-header">
+        <div class="chart-num">Consulta</div>
+        <div class="chart-title">Buscar Valor e Quantidade de Transações por Período</div>
+        <div class="chart-desc">Abra o calendário: escolha um ano e use "usar ano completo", ou entre no ano e escolha um mês. Dados mensais disponíveis de novembro de 2020 a maio de 2026.</div>
+      </div>
+
+      <div class="search-row">
+        <div id="calTrigger" class="cal-trigger" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <span id="calLabel">Escolher período&hellip;</span>
+        </div>
+        <button id="searchBtn" class="search-btn">Buscar</button>
+
+        <div id="calPanel" class="cal-panel">
+          <div class="cal-panel-nav">
+            <button id="navPrev" class="cal-nav-btn" aria-label="Ano anterior">&#8249;</button>
+            <button id="navLabel" class="cal-nav-label">Selecionar ano</button>
+            <button id="navNext" class="cal-nav-btn" aria-label="Próximo ano">&#8250;</button>
+          </div>
+          <div id="viewYear" class="cal-grid cal-grid-year"></div>
+          <div id="viewMonthWrap" class="cal-month-wrap">
+            <div id="viewMonth" class="cal-grid cal-grid-month"></div>
+            <button id="useFullYear" class="cal-fullyear-btn">Usar ano completo</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="searchResult"></div>
+      <div class="chart-source">Fonte: BANCO CENTRAL DO BRASIL. <em>Estatísticas do SPI.</em> Série mensal nov/2020–mai/2026 incorporada ao código-fonte do dashboard.</div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-title">Fontes e Referências dos Dados</div>
@@ -475,6 +700,10 @@
       <div class="source-item">
         <strong>BCB / DataRudder — MED 2.0</strong>
         Mecanismo Especial de Devolução. Dados de recuperação de fraudes, 2026.
+      </div>
+      <div class="source-item">
+        <strong>BCB — Estatísticas do SPI</strong>
+        Banco Central do Brasil. Série mensal de transações, nov/2020–mai/2026. Base da regressão linear e da busca por período.
       </div>
     </div>
     <div class="footer-bottom">
@@ -557,6 +786,7 @@
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { labels: { color: C.text2, font: fontDef, boxWidth: 14 } },
@@ -604,6 +834,7 @@
     options: {
       indexAxis: 'y',
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: { display: false },
         tooltip: {
@@ -638,6 +869,7 @@
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: { display: false },
         tooltip: {
@@ -679,6 +911,7 @@
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: { labels: { color: C.text2, font: fontDef } },
         tooltip: {
@@ -729,6 +962,7 @@
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: { labels: { color: C.text2, font: fontDef, boxWidth: 14 } },
         tooltip: {
@@ -767,6 +1001,7 @@
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: { display: false },
         tooltip: {
@@ -784,6 +1019,325 @@
         },
       },
     },
+  });
+
+  // ════════════════════════════════════════════════════════════
+  // DADOS — Transações PIX via SPI, mensal, nov/2020–mai/2026 (67 meses)
+  // Fonte: Banco Central do Brasil, Estatísticas do SPI.
+  // Cada registro: [ "AAAA-MM", valor em R$ bilhões, quantidade em milhões ]
+  // ════════════════════════════════════════════════════════════
+  const TX_RAW = [['2020-11',25.87,29.52],['2020-12',107.2,124.89],['2021-01',137.92,169.77],['2021-02',169.61,229.42],['2021-03',238.34,328.46],['2021-04',273.6,410.67],['2021-05',327.38,543.28],['2021-06',361.36,626.02],['2021-07',413.42,745.68],['2021-08',458.0,815.19],['2021-09',479.64,871.21],['2021-10',502.08,979.86],['2021-11',538.33,1035.14],['2021-12',622.43,1224.4],['2022-01',553.98,1093.37],['2022-02',562.34,1162.44],['2022-03',690.2,1362.48],['2022-04',680.46,1419.97],['2022-05',770.62,1575.16],['2022-06',772.74,1633.75],['2022-07',811.82,1749.93],['2022-08',887.05,1858.91],['2022-09',880.08,1921.67],['2022-10',897.48,2048.98],['2022-11',921.4,2103.8],['2022-12',1046.79,2423.16],['2023-01',955.29,2182.92],['2023-02',906.27,2153.79],['2023-03',1098.34,2546.01],['2023-04',1029.35,2519.08],['2023-05',1146.81,2758.91],['2023-06',1157.13,2858.43],['2023-07',1207.07,3077.55],['2023-08',1286.77,3278.23],['2023-09',1277.21,3351.06],['2023-10',1380.51,3554.61],['2023-11',1422.09,3705.35],['2023-12',1600.13,4213.42],['2024-01',1483.21,3850.64],['2024-02',1423.26,3847.08],['2024-03',1591.83,4322.93],['2024-04',1736.3,4345.27],['2024-05',1770.72,4620.74],['2024-06',1776.38,4657.22],['2024-07',1954.75,4786.64],['2024-08',1948.18,5009.38],['2024-09',1937.49,4894.96],['2024-10',2088.46,5096.16],['2024-11',2081.56,5171.28],['2024-12',2329.18,5710.11],['2025-01',2077.34,5060.29],['2025-02',2044.48,4985.8],['2025-03',2172.42,5564.43],['2025-04',2254.21,5598.16],['2025-05',2379.22,5930.14],['2025-06',2395.48,5799.01],['2025-07',2562.06,5996.86],['2025-08',2550.27,6239.61],['2025-09',2651.62,6133.28],['2025-10',2766.79,6453.01],['2025-11',2607.79,6460.9],['2025-12',3146.76,7098.63],['2026-01',2700.0,6364.18],['2026-02',2563.44,5986.27],['2026-03',3012.74,6742.0],['2026-04',2896.68,6680.9],['2026-05',2957.49,7121.88]];
+
+  const MES_NOMES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+
+  const TX = TX_RAW.map(([ym, valor, qtd], i) => {
+    const [ano, mes] = ym.split('-').map(Number);
+    return { ym, ano, mes, valor, qtd, x: i + 1 };
+  });
+  const TX_BY_YM = {};
+  TX.forEach(d => { TX_BY_YM[d.ym] = d; });
+  const ANOS_DISPONIVEIS = [...new Set(TX.map(d => d.ano))];
+
+  // ── GRÁFICO 7 — Regressão linear (quantidade mensal, série completa) ──
+  const REG_SLOPE = 110.8577, REG_INTERCEPT = -407.7558;
+  const N_HIST = TX.length;
+  const N_PROJ = 18;
+
+  const histLabels = TX.map(d => `${String(d.mes).padStart(2,'0')}/${d.ano}`);
+  const histQtd = TX.map(d => d.qtd / 1000); // em bilhões
+
+  let projAno = TX[N_HIST - 1].ano, projMes = TX[N_HIST - 1].mes;
+  const projLabels = [], projQtd = [];
+  for (let i = 1; i <= N_PROJ; i++) {
+    projMes++;
+    if (projMes > 12) { projMes = 1; projAno++; }
+    projLabels.push(`${String(projMes).padStart(2,'0')}/${projAno}`);
+    const xf = N_HIST + i;
+    projQtd.push((REG_SLOPE * xf + REG_INTERCEPT) / 1000);
+  }
+
+  const chart7Labels = histLabels.concat(projLabels);
+  const chart7Hist = histQtd.concat(Array(N_PROJ).fill(null));
+  const chart7Proj = Array(N_HIST - 1).fill(null).concat([histQtd[N_HIST - 1]]).concat(projQtd);
+
+  new Chart(document.getElementById('chart7'), {
+    data: {
+      labels: chart7Labels,
+      datasets: [
+        {
+          type: 'line',
+          label: 'Histórico real',
+          data: chart7Hist,
+          borderColor: C.accent,
+          backgroundColor: 'rgba(37,99,235,0.07)',
+          borderWidth: 2.5,
+          pointRadius: 0,
+          tension: 0.15,
+          fill: true,
+        },
+        {
+          type: 'line',
+          label: 'Projeção (18 meses)',
+          data: chart7Proj,
+          borderColor: C.orange,
+          borderWidth: 2.5,
+          borderDash: [6, 4],
+          pointRadius: 0,
+          tension: 0.15,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { labels: { color: C.text2, font: fontDef, boxWidth: 14 } },
+        tooltip: {
+          ...tooltipStyle,
+          callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y?.toFixed(2)} bi` },
+        },
+      },
+      scales: {
+        x: {
+          ticks: { ...tickStyle, autoSkip: true, maxTicksLimit: 14, maxRotation: 0 },
+          grid: { display: false },
+        },
+        y: {
+          title: { display: true, text: 'Bilhões de transações', color: C.text3, font: fontDef },
+          ticks: tickStyle,
+          grid: { color: gridColor },
+        },
+      },
+    },
+  });
+
+  // ════════════════════════════════════════════════════════════
+  // FERRAMENTA DE BUSCA POR PERÍODO
+  // ════════════════════════════════════════════════════════════
+  const calTrigger   = document.getElementById('calTrigger');
+  const calLabel      = document.getElementById('calLabel');
+  const calPanel       = document.getElementById('calPanel');
+  const viewYear       = document.getElementById('viewYear');
+  const viewMonthWrap  = document.getElementById('viewMonthWrap');
+  const viewMonth      = document.getElementById('viewMonth');
+  const navLabel       = document.getElementById('navLabel');
+  const navPrev        = document.getElementById('navPrev');
+  const navNext        = document.getElementById('navNext');
+  const useFullYearBtn = document.getElementById('useFullYear');
+  const searchBtn      = document.getElementById('searchBtn');
+  const searchResult   = document.getElementById('searchResult');
+
+  let yearIdx = ANOS_DISPONIVEIS.length - 1;
+  let selected = null;
+  let contextChartInstance = null;
+  let yearChartInstance = null;
+
+  function renderYearGrid() {
+    viewYear.style.display = 'grid';
+    viewMonthWrap.classList.remove('open');
+    navLabel.textContent = 'Selecionar ano';
+    navPrev.style.visibility = 'hidden';
+    navNext.style.visibility = 'hidden';
+    viewYear.innerHTML = '';
+    ANOS_DISPONIVEIS.forEach((ano, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = ano;
+      btn.addEventListener('click', () => { yearIdx = i; renderMonthGrid(); });
+      viewYear.appendChild(btn);
+    });
+  }
+
+  function renderMonthGrid() {
+    const ano = ANOS_DISPONIVEIS[yearIdx];
+    viewYear.style.display = 'none';
+    viewMonthWrap.classList.add('open');
+    navLabel.textContent = ano;
+    navPrev.style.visibility = 'visible';
+    navNext.style.visibility = 'visible';
+    viewMonth.innerHTML = '';
+    MES_NOMES.forEach((nome, i) => {
+      const mes = i + 1;
+      const ym = `${ano}-${String(mes).padStart(2,'0')}`;
+      const exists = !!TX_BY_YM[ym];
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = nome;
+      btn.disabled = !exists;
+      if (exists) {
+        btn.addEventListener('click', () => {
+          selected = { type: 'month', ym };
+          calLabel.textContent = `${nome}/${ano}`;
+          calTrigger.classList.add('has-value');
+          closeCalPanel();
+        });
+      }
+      viewMonth.appendChild(btn);
+    });
+  }
+
+  function openCalPanel() {
+    calPanel.classList.add('open');
+    calTrigger.setAttribute('aria-expanded', 'true');
+    renderYearGrid();
+  }
+  function closeCalPanel() {
+    calPanel.classList.remove('open');
+    calTrigger.setAttribute('aria-expanded', 'false');
+  }
+
+  calTrigger.addEventListener('click', () => {
+    calPanel.classList.contains('open') ? closeCalPanel() : openCalPanel();
+  });
+  calTrigger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); calTrigger.click(); }
+  });
+  document.addEventListener('click', (e) => {
+    if (!calPanel.contains(e.target) && !calTrigger.contains(e.target)) closeCalPanel();
+  });
+
+  navPrev.addEventListener('click', () => { yearIdx = Math.max(0, yearIdx - 1); renderMonthGrid(); });
+  navNext.addEventListener('click', () => { yearIdx = Math.min(ANOS_DISPONIVEIS.length - 1, yearIdx + 1); renderMonthGrid(); });
+  navLabel.addEventListener('click', renderYearGrid);
+
+  useFullYearBtn.addEventListener('click', () => {
+    const ano = ANOS_DISPONIVEIS[yearIdx];
+    selected = { type: 'year', ano };
+    calLabel.textContent = `Ano ${ano}`;
+    calTrigger.classList.add('has-value');
+    closeCalPanel();
+  });
+
+  function destroyResultCharts() {
+    if (contextChartInstance) { contextChartInstance.destroy(); contextChartInstance = null; }
+    if (yearChartInstance) { yearChartInstance.destroy(); yearChartInstance = null; }
+  }
+
+  function renderMonthResult(ym) {
+    const d = TX_BY_YM[ym];
+    const idx = TX.findIndex(t => t.ym === ym);
+    const prev = idx > 0 ? TX[idx - 1] : null;
+    const varPct = prev ? (((d.valor - prev.valor) / prev.valor) * 100).toFixed(1) : null;
+    const [ano, mes] = ym.split('-').map(Number);
+    const label = `${MES_NOMES[mes-1]}/${ano}`;
+
+    searchResult.innerHTML = `
+      <div class="result-kpis">
+        <div class="result-card">
+          <div class="result-label">Valor transacionado — ${label}</div>
+          <div class="result-value v-blue">R$ ${d.valor.toFixed(1)} bi</div>
+          ${varPct !== null ? `<div class="result-change ${varPct >= 0 ? 'up' : 'down'}">${varPct >= 0 ? '▲' : '▼'} ${Math.abs(varPct)}% vs. mês anterior</div>` : ''}
+        </div>
+        <div class="result-card">
+          <div class="result-label">Quantidade de transações</div>
+          <div class="result-value v-green">${(d.qtd/1000).toFixed(2)} bi</div>
+        </div>
+      </div>
+      <div class="result-subtitle">Contexto: seis meses anteriores até ${label}</div>
+      <div class="chart-wrap" style="height:180px;"><canvas id="ctxChart"></canvas></div>
+    `;
+
+    const ctxStart = Math.max(0, idx - 5);
+    const ctxSlice = TX.slice(ctxStart, idx + 1);
+    contextChartInstance = new Chart(document.getElementById('ctxChart'), {
+      type: 'line',
+      data: {
+        labels: ctxSlice.map(t => `${String(t.mes).padStart(2,'0')}/${t.ano}`),
+        datasets: [{
+          data: ctxSlice.map(t => t.qtd / 1000),
+          borderColor: C.green,
+          backgroundColor: 'rgba(13,148,136,0.08)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4,
+          pointBackgroundColor: C.green,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { ...tooltipStyle, callbacks: { label: ctx => ` ${ctx.parsed.y.toFixed(2)} bi` } } },
+        scales: {
+          x: { ticks: tickStyle, grid: { display: false } },
+          y: { ticks: { ...tickStyle, callback: v => `${v}bi` }, grid: { color: gridColor } },
+        },
+      },
+    });
+  }
+
+  function renderYearResult(ano) {
+    const meses = TX.filter(t => t.ano === ano);
+    searchResult.innerHTML = `
+      <div class="result-subtitle">Evolução mensal de ${ano} — valor e quantidade de transações</div>
+      <div class="chart-wrap" style="height:260px;"><canvas id="yearChart"></canvas></div>
+    `;
+    yearChartInstance = new Chart(document.getElementById('yearChart'), {
+      data: {
+        labels: meses.map(t => MES_NOMES[t.mes - 1]),
+        datasets: [
+          {
+            type: 'bar',
+            label: 'Quantidade (bi)',
+            data: meses.map(t => t.qtd / 1000),
+            backgroundColor: 'rgba(37,99,235,0.75)',
+            borderRadius: 5,
+            yAxisID: 'y',
+            order: 2,
+          },
+          {
+            type: 'line',
+            label: 'Valor (R$ tri)',
+            data: meses.map(t => t.valor / 1000),
+            borderColor: C.green,
+            backgroundColor: 'rgba(13,148,136,0.08)',
+            pointBackgroundColor: C.green,
+            pointRadius: 5,
+            tension: 0.3,
+            fill: false,
+            yAxisID: 'y2',
+            order: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { labels: { color: C.text2, font: fontDef, boxWidth: 14 } },
+          tooltip: { ...tooltipStyle },
+        },
+        scales: {
+          x: { ticks: tickStyle, grid: { display: false } },
+          y: {
+            position: 'left',
+            title: { display: true, text: 'Transações (bi)', color: C.text3, font: fontDef },
+            ticks: tickStyle,
+            grid: { color: gridColor },
+          },
+          y2: {
+            position: 'right',
+            title: { display: true, text: 'Valor (R$ tri)', color: C.text3, font: fontDef },
+            ticks: { ...tickStyle, callback: v => `R$ ${v.toFixed(1)}` },
+            grid: { drawOnChartArea: false },
+          },
+        },
+      },
+    });
+  }
+
+  searchBtn.addEventListener('click', () => {
+    destroyResultCharts();
+    if (!selected) {
+      searchResult.innerHTML = `<div class="search-error">Abra o calendário: escolha um ano e use "usar ano completo", ou escolha um mês.</div>`;
+      return;
+    }
+    if (selected.type === 'month') {
+      renderMonthResult(selected.ym);
+    } else if (selected.type === 'year') {
+      renderYearResult(selected.ano);
+    }
   });
 </script>
 </body>
