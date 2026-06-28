@@ -142,6 +142,7 @@
   .kpi-card.c5::before { background: #ca8a04; }
   .kpi-card.c6::before { background: #e11d48; }
   .kpi-card.c7::before { background: var(--accent2); }
+  .kpi-card.c8::before { background: var(--accent4); }
 
   .kpi-label {
     font-size: 11px;
@@ -166,6 +167,7 @@
   .kpi-card.c5 .kpi-value { color: #ca8a04; }
   .kpi-card.c6 .kpi-value { color: #e11d48; }
   .kpi-card.c7 .kpi-value { color: var(--accent2); }
+  .kpi-card.c8 .kpi-value { color: var(--accent4); }
 
   .kpi-change {
     font-size: 12px;
@@ -279,6 +281,14 @@
     color: var(--text2);
     display: block;
     margin-bottom: 2px;
+  }
+
+  .source-item a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .source-item a:hover {
+    text-decoration: underline;
   }
 
   .footer-bottom {
@@ -694,6 +704,11 @@
       <div class="kpi-value">13,3%</div>
       <div class="kpi-change up">▲ vs. 9% no MED original</div>
     </div>
+    <div class="kpi-card c8">
+      <div class="kpi-label">Consentimentos Open Finance</div>
+      <div class="kpi-value">103 milhões</div>
+      <div class="kpi-change up">▲ +143% consent. únicos 24/25</div>
+    </div>
   </div>
 
   <div class="data-note">
@@ -961,35 +976,39 @@
     <div class="sources-list">
       <div class="source-item">
         <strong>FEBRABAN — Meios de Pagamento 2024</strong>
-        Federação Brasileira de Bancos. Maio 2025. Disponível em: portal.febraban.org.br
+        Federação Brasileira de Bancos. Maio 2025. Disponível em: <a href="https://portal.febraban.org.br" target="_blank" rel="noopener">portal.febraban.org.br</a>
       </div>
       <div class="source-item">
         <strong>BCB — Estatísticas PIX</strong>
-        Banco Central do Brasil. 2023. Disponível em: bcb.gov.br/estabilidadefinanceira/estatisticaspix
+        Banco Central do Brasil. 2023. Disponível em: <a href="https://www.bcb.gov.br/estabilidadefinanceira/estatisticaspix" target="_blank" rel="noopener">bcb.gov.br/estabilidadefinanceira/estatisticaspix</a>
       </div>
       <div class="source-item">
         <strong>BCB — Relatório de Cidadania Financeira 2024</strong>
-        Banco Central do Brasil. Brasília, abril 2026. Disponível em: bcb.gov.br
+        Banco Central do Brasil. Brasília, abril 2026. Disponível em: <a href="https://www.bcb.gov.br" target="_blank" rel="noopener">bcb.gov.br</a>
       </div>
       <div class="source-item">
         <strong>FEBRABAN — Relatório de Fraudes e Golpes 2024</strong>
-        Federação Brasileira de Bancos. Março 2025.
+        Federação Brasileira de Bancos. Março 2025. Disponível em: <a href="https://portal.febraban.org.br" target="_blank" rel="noopener">portal.febraban.org.br</a>
       </div>
       <div class="source-item">
         <strong>WORLD BANK — Global Findex Database 2021</strong>
-        Banco Mundial. Washington, DC, 2022.
+        Banco Mundial. Washington, DC, 2022. Disponível em: <a href="https://www.worldbank.org/en/publication/globalfindex" target="_blank" rel="noopener">worldbank.org/en/publication/globalfindex</a>
       </div>
       <div class="source-item">
         <strong>IBGE — PNAD Contínua TIC 2022</strong>
-        Instituto Brasileiro de Geografia e Estatística. Disponível em: ibge.gov.br
+        Instituto Brasileiro de Geografia e Estatística. Disponível em: <a href="https://www.ibge.gov.br" target="_blank" rel="noopener">ibge.gov.br</a>
       </div>
       <div class="source-item">
         <strong>BCB / DataRudder — MED 2.0</strong>
-        Mecanismo Especial de Devolução. Dados de recuperação de fraudes, 2026.
+        Mecanismo Especial de Devolução. Dados de recuperação de fraudes, 2026. Disponível em: <a href="https://datarudder.com/med-pix/" target="_blank" rel="noopener">datarudder.com/med-pix</a>
       </div>
       <div class="source-item">
-        <strong>BCB — Estatísticas do SPI</strong>
-        Banco Central do Brasil. Série mensal de transações, nov/2020–mai/2026. Base da regressão linear e da busca por período.
+        <strong>BCB — Estatísticas do Pix (SPI)</strong>
+        Banco Central do Brasil. Portal de Dados Abertos. Série mensal de transações, nov/2020–mai/2026. Base do Gráfico 01, da regressão linear e da busca por período. Disponível em: <a href="https://dadosabertos.bcb.gov.br/dataset/pix" target="_blank" rel="noopener">dadosabertos.bcb.gov.br/dataset/pix</a>
+      </div>
+      <div class="source-item">
+        <strong>Dock.tech — Open Finance no Brasil</strong>
+        Panorama de 2025. Dock, 2026. Disponível em: <a href="https://dock.tech" target="_blank" rel="noopener">dock.tech</a>
       </div>
     </div>
     <div class="footer-bottom">
